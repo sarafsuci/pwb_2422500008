@@ -56,3 +56,35 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = 'administrator/Admin_dashboard_controller/index';
 $route['admin/login'] = 'administrator/admin_auth_controller/index';
 $route['admin/logout'] = 'administrator/admin_auth_controller/logout';
+
+#admin kategori
+$route['admin/kategori']                = 'administrator/Kategori_controller/index';
+$route['admin/kategori/tambah']         = 'administrator/Kategori_controller/tambah';
+$route['admin/kategori/simpan']         = 'administrator/Kategori_controller/simpan';
+$route['admin/kategori/ubah/(:num)']    = 'administrator/Kategori_controller/ubah/$1';
+$route['admin/kategori/update/(:num)']  = 'administrator/Kategori_controller/update/$1';
+$route['admin/kategori/hapus/(:num)']   = 'administrator/Kategori_controller/hapus/$1';
+
+#admin supplier
+$route['admin/supplier']                = 'administrator/Supplier_controller/index';
+$route['admin/supplier/tambah']         = 'administrator/Supplier_controller/tambah';
+$route['admin/supplier/simpan']         = 'administrator/Supplier_controller/simpan';
+$route['admin/supplier/ubah/(:num)']    = 'administrator/Supplier_controller/ubah/$1';
+$route['admin/supplier/update/(:num)']  = 'administrator/Supplier_controller/update/$1';
+$route['admin/supplier/hapus/(:num)']   = 'administrator/Supplier_controller/hapus/$1';
+
+#admin kota
+$route['admin/kota']                = 'administrator/Kota2422500008_controller/index';
+$route['admin/kota/tambah']         = 'administrator/Kota2422500008_controller/tambah';
+$route['admin/kota/simpan']         = 'administrator/Kota2422500008_controller/simpan';
+$route['admin/kota/ubah/(:num)']    = 'administrator/Kota2422500008_controller/ubah/$1';
+$route['admin/kota/update/(:num)']  = 'administrator/Kota2422500008_controller/update/$1';
+$route['admin/kota/hapus/(:num)']   = 'administrator/Kota2422500008_controller/hapus/$1';
+
+#produk
+$route['admin/produk'] = 'administrator/Produk_controller/index';
+$route['admin/produk/tambah'] = 'administrator/Produk_controller/tambah_produk';
+$route['admin/produk/ubah/(:num)'] = 'administrator/Produk_controller/ubah_produk/$1';
+$route['admin/produk/hapus/(:num)'] = 'administrator/Produk_controller/hapus_produk/$1';
+
+$route['admin/produk/hapus_gambar/(:num)/(:num)'] ='administrator/Produk_controller/hapus_gambar/$1/$2';
