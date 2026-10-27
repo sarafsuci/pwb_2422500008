@@ -23,10 +23,9 @@ class Kota2422500008_controller extends CI_Controller
 
     public function index()
     {
-        $this->render('index', array(
-            'title' => 'Data Kota | PWB',
-            'kota' => $this->kota_model->get_all()
-        ));
+        $data['title'] = 'Data Kota | PWB';
+        $data['kota'] = $this->kota_model->get_all();
+        $this->render('index', $data);
     }
 
     public function tambah()
@@ -36,48 +35,27 @@ class Kota2422500008_controller extends CI_Controller
 
     public function simpan()
     {
-        $this->set_rules();
+        $this->form_validation->set_rules('nama_kota008', 'Nama kota', 'required|trim|max_length[50]');
+        $this->form_validation->set_rules('jenis_kota008', 'Jenis kota', 'required|in_list[Kota,Kabupaten]');
+        $this->form_validation->set_rules('provinsi008', 'Provinsi', 'required|trim|max_length[10]');
+        $this->form_validation->set_rules('status008', 'Status', 'required|in_list[Aktif,Tidak Aktif]');
+
         if ($this->form_validation->run() === FALSE) {
-            $this->tambah();
+            $this->render('tambah_kota', array('title' => 'Tambah Kota | PWB'));
             return;
         }
 
-        if ($this->kota_model->tambah($this->kota_data())) {
+        $data = array(
+            'nama_kota008' => trim($this->input->post('nama_kota008', TRUE)),
+            'jenis_kota008' => $this->input->post('jenis_kota008', TRUE),
+            'provinsi008' => trim($this->input->post('provinsi008', TRUE)),
+            'status008' => $this->input->post('status008', TRUE)
+        );
+
+        if ($this->kota_model->tambah($data)) {
             $this->session->set_flashdata('success', 'Kota berhasil ditambahkan.');
         } else {
             $this->session->set_flashdata('error', 'Kota gagal ditambahkan.');
-        }
-        redirect('admin/kota');
-    }
-
-    public function ubah($id)
-    {
-        $kota = $this->kota_model->get_by_id($id);
-        if (!$kota) {
-            show_404();
-            return;
-        }
-        $this->render('ubah_kota', array('title' => 'Ubah Kota | PWB', 'kota' => $kota));
-    }
-
-    public function update($id)
-    {
-        $kota = $this->kota_model->get_by_id($id);
-        if (!$kota) {
-            show_404();
-            return;
-        }
-
-        $this->set_rules();
-        if ($this->form_validation->run() === FALSE) {
-            $this->render('ubah_kota', array('title' => 'Ubah Kota | PWB', 'kota' => $kota));
-            return;
-        }
-
-        if ($this->kota_model->ubah($this->kota_data(), $id)) {
-            $this->session->set_flashdata('success', 'Kota berhasil diubah.');
-        } else {
-            $this->session->set_flashdata('error', 'Kota gagal diubah.');
         }
         redirect('admin/kota');
     }
@@ -97,21 +75,50 @@ class Kota2422500008_controller extends CI_Controller
         redirect('admin/kota');
     }
 
-    private function set_rules()
+    public function ubah($id)
     {
+        $kota = $this->kota_model->get_by_id($id);
+        if (!$kota) {
+            show_404();
+            return;
+        }
+        $this->render('ubah_kota', array(
+            'title' => 'Ubah Kota | PWB',
+            'kota' => $kota
+        ));
+    }
+
+    public function update($id)
+    {
+        $kota = $this->kota_model->get_by_id($id);
+        if (!$kota) {
+            show_404();
+            return;
+        }
+
         $this->form_validation->set_rules('nama_kota008', 'Nama kota', 'required|trim|max_length[50]');
         $this->form_validation->set_rules('jenis_kota008', 'Jenis kota', 'required|in_list[Kota,Kabupaten]');
         $this->form_validation->set_rules('provinsi008', 'Provinsi', 'required|trim|max_length[10]');
         $this->form_validation->set_rules('status008', 'Status', 'required|in_list[Aktif,Tidak Aktif]');
-    }
 
-    private function kota_data()
-    {
-        return array(
+        if ($this->form_validation->run() === FALSE) {
+            $this->render('ubah_kota', array('title' => 'Ubah Kota | PWB', 'kota' => $kota));
+            return;
+        }
+
+        $data = array(
             'nama_kota008' => trim($this->input->post('nama_kota008', TRUE)),
             'jenis_kota008' => $this->input->post('jenis_kota008', TRUE),
             'provinsi008' => trim($this->input->post('provinsi008', TRUE)),
             'status008' => $this->input->post('status008', TRUE)
         );
+
+        if ($this->kota_model->ubah($data, $id)) {
+            $this->session->set_flashdata('success', 'Kota berhasil diubah.');
+        } else {
+            $this->session->set_flashdata('error', 'Kota gagal diubah.');
+        }
+        redirect('admin/kota');
     }
+
 }
