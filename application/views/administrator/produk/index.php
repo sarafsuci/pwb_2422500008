@@ -54,11 +54,11 @@
                     foreach ($list_produk as $produk) : ?>
                       <tr>
                         <th scope="row"><?= $no ?></th>
-                        <td><?= html_escape($produk['pd_nama']) ?></td>
-                        <td><?= html_escape($produk['kt_nama']) ?></td>
+                        <td><?= $produk['pd_nama'] ?></td>
+                        <td><?= $produk['kt_nama'] ?></td>
                         <td>Rp. <?= number_format($produk['harga']) ?></td>
                         <td><?= (int) $produk['stok'] ?></td>
-                        <td><?= html_escape($produk['deskripsi']) ?></td>
+                        <td><?= $produk['deskripsi'] ?></td>
                         <td>
                           <a href="<?= base_url('admin/produk/ubah/') ?><?= $produk['id_produk'] ?>"><span class="badge badge-success">Ubah</span></a>
                           <a href="<?= base_url('admin/produk/hapus/') ?><?= $produk['id_produk'] ?>" onclick="return confirm('Yakin ingin menghapus produk ini beserta semua gambarnya?')"><span class="badge badge-danger">Hapus</span></a>

@@ -36,7 +36,7 @@
                   <select class="form-control" name="kategori_produk" id="kategori_produk">
                     <option value="">-- pilih kategori --</option>
                     <?php foreach ($list_kategori as $kategori) : ?>
-                      <option value="<?= $kategori['id_kategori'] ?>" <?= set_select('kategori_produk', $kategori['id_kategori']) ?>><?= html_escape($kategori['nama']) ?></option>
+                      <option value="<?= $kategori['id_kategori'] ?>" <?= set_select('kategori_produk', $kategori['id_kategori']) ?>><?= $kategori['nama'] ?></option>
                     <?php endforeach ?>
                   </select>
                   <small class="text-danger"><em><?= form_error('kategori_produk') ?></em></small>

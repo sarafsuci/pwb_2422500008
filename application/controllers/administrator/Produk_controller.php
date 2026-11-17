@@ -284,7 +284,7 @@ class Produk_controller extends CI_Controller
                     <use xlink:href="#' . $icon . '" />
                 </svg>
                 <div>
-                    ' . html_escape($pesan) . '
+                    ' . $pesan . '
                 </div>
                 <button type="button" class="close" data-dismiss="alert" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>

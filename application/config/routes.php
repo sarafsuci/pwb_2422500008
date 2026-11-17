@@ -88,3 +88,12 @@ $route['admin/produk/ubah/(:num)'] = 'administrator/Produk_controller/ubah_produ
 $route['admin/produk/hapus/(:num)'] = 'administrator/Produk_controller/hapus_produk/$1';
 
 $route['admin/produk/hapus_gambar/(:num)/(:num)'] ='administrator/Produk_controller/hapus_gambar/$1/$2';
+
+#produk front-end
+$route['produk/(:num)'] = 'Produk_controller/detail/$1';
+
+#pelanggan
+$route['login'] = 'pelanggan_controller/login';
+$route['register'] = 'pelanggan_controller/register';
+$route['logout'] = 'pelanggan_controller/logout';
+$route['profil'] = 'pelanggan_controller/profil';

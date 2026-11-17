@@ -35,10 +35,10 @@
                 </a>
                 <div class="card-body">
                   <?php if ($this->session->flashdata('success')) : ?>
-                    <div class="alert alert-success"><?= html_escape($this->session->flashdata('success')); ?></div>
+                    <div class="alert alert-success"><?= $this->session->flashdata('success'); ?></div>
                   <?php endif ?>
                   <?php if ($this->session->flashdata('error')) : ?>
-                    <div class="alert alert-danger"><?= html_escape($this->session->flashdata('error')); ?></div>
+                    <div class="alert alert-danger"><?= $this->session->flashdata('error'); ?></div>
                   <?php endif ?>
                   <table class="table table-bordered table-hover">
                     <thead>
@@ -54,8 +54,8 @@
                       foreach ($kategori as $item) : ?>
                         <tr data-widget="expandable-table" aria-expanded="false">
                           <td><?= $no ?></td>
-                          <td><?= html_escape($item['nama']) ?></td>
-                          <td><?= html_escape($item['deskripsi'] ?? '') ?></td>
+                          <td><?= $item['nama'] ?></td>
+                          <td><?= $item['deskripsi'] ?? '' ?></td>
                           <td>
                             <a href="<?= site_url('admin/kategori/ubah/' . $item['id_kategori']); ?>"><span class="badge bg-success">Ubah</span></a>
                             <a href="<?= site_url('admin/kategori/hapus/' . $item['id_kategori']); ?>" onclick="return confirm('Hapus kategori ini?')"><span class="badge bg-danger">Hapus</span></a>
