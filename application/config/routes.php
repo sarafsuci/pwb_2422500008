@@ -98,3 +98,6 @@ $route['register'] = 'pelanggan_controller/register';
 $route['logout'] = 'pelanggan_controller/logout';
 $route['profil'] = 'pelanggan_controller/profil';
 
+#ecom
+$route['produk'] = 'produk_controller/detail';
+$route['produk/(:num)'] = 'produk_controller/detail/$1';
