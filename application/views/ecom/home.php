@@ -15,7 +15,7 @@
                     $gambar = $gambar_model->get_by_produk_id($value['id_produk']);
                     ?>
                     <a href="<?= base_url('produk/') . $value['id_produk'] ?>">
-                        <img src="<?= base_url('uploads') ?>/produk/<?= $gambar[0]['nama_gambar'] ?>"
+                        <img src="<?= base_url('uploads') ?>/produk/<?= $gambar[0]['nama_gambar']; ?>"
                             class="d-block w-100" alt="...">
                     </a>
                     <div class="card-body">
